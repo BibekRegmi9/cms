@@ -9,7 +9,12 @@ export class UserController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+    try {
+      const user =  this.userService.create(createUserDto);
+      return user;
+    } catch (error) {
+      console.log('something went wrong in user controller');
+    }
   }
 
   @Get()

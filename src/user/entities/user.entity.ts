@@ -70,5 +70,11 @@ export class User extends CommonEntity{
     fax: string;
 
     @Column()
+    created_by: number;
+
+    @Column()
+    updated_by: number;
+
+    @Column()
     user_id: number;
 }
