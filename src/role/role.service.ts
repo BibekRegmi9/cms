@@ -20,7 +20,7 @@ export class RoleService {
   }
 
   findOne(id: number) {
-    return this.roleRepository.findOne({where: {id}})
+    return this.roleRepository.findOne({where: {id}});
   }
 
   update(id: number, updateRoleDto: UpdateRoleDto) {

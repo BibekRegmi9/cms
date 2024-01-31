@@ -28,4 +28,6 @@ export class CreateUserDto {
 
     @IsString()
     fax: string;
+
+    roleId: number[];
 }

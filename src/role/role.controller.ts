@@ -15,17 +15,20 @@ export class RoleController {
 
   @Get()
   findAll() {
-    return this.roleService.findAll();
+    const roles =  this.roleService.findAll();
+    return roles;
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.roleService.findOne(+id);
+    const role =  this.roleService.findOne(+id);
+    return role;
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateRoleDto: UpdateRoleDto) {
-    return this.roleService.update(+id, updateRoleDto);
+    const role =  this.roleService.update(+id, updateRoleDto);
+    return role;
   }
 
   @Delete(':id')

@@ -1,4 +1,4 @@
-import { CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 export class CommonEntity {
 
@@ -10,6 +10,9 @@ export class CommonEntity {
 
     @UpdateDateColumn()
     updated_at: Date; 
+
+    @Column({default: false})
+    is_active: boolean;
 
     
 }

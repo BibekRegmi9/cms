@@ -4,19 +4,33 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
+import { UserRoleMapping } from 'src/user-role/user_role_mapping.entity';
 
 @Injectable()
 export class UserService {
 
-  constructor(@InjectRepository(User) private userRepository: Repository<User>
+  constructor(
+    @InjectRepository(User) private userRepository: Repository<User>,
+    @InjectRepository(UserRoleMapping) private userRoleRepository: Repository<UserRoleMapping>
   ){}
 
-  create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto) {
        const user = this.userRepository.create(createUserDto);
-       if(!user){
-        throw new HttpException('User not found',HttpStatus.BAD_REQUEST);
+       const saveUser = await this.userRepository.save(user);
+       for(let role of createUserDto.roleId){
+        if(role){
+          const createUserRole = this.userRoleRepository.create({
+            user_id:saveUser.id,
+            role_id:role
+          })
+          const createdUser = await this.userRoleRepository.save(createUserRole);
+          return createdUser
+        }
        }
-       return this.userRepository.save(user);
+       
+
+       
+
   }
 
   findAll() {
@@ -27,6 +41,7 @@ export class UserService {
     return user;
   }
 
+  
   findOne(id: number) {
     const user = this.userRepository.findOne({where: {id}})
     if(!user){

@@ -55,6 +55,4 @@ export class User extends CommonEntity{
     @Column({nullable: true})
     updated_by: number;
 
-    @Column({default:null})
-    user_id: number;
 }
