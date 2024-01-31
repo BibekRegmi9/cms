@@ -5,76 +5,58 @@ import { CommonEntity } from "src/common/common.entity";
 export class User extends CommonEntity{
 
 
-    @Column()
+    @Column({nullable: false})
     first_name_en: string;
 
-    @Column()
+    @Column({nullable: true})
     middle_name_en: string;
 
-    @Column()
+    @Column({nullable: false})
     last_name_en: string;
 
-    @Column()
+    @Column({default:true})
     is_active: boolean;
     
-    @Column()
+    @Column({default:false})
     is_permanent: boolean;
 
-    @Column()
+    @Column({unique: true})
     email: string;
 
-    @Column()
+    @Column({nullable: false})
     password: string;
 
-    @Column()
+    @Column({unique: true})
     contact_no: number;
 
-    @Column()
+    @Column({default:null})
     profile_pic: string;
 
-    @Column()
+    @Column({default:false})
     is_password_changed: boolean;
 
-    @Column()
-    first_name_np: string;
+   
 
-    @Column()
-    middle_name_np: string;
-
-    @Column()
-    last_name_np: string;
-
-    @Column()
+    @Column({default:'male'})
     gender: string;
 
-    @Column()
-    user_type: string;
-
-    @Column()
-    detail_status: string;
-
-    @Column()
-    pan_no: string;
-
-    @Column()
-    citizenship_no: string;
 
     @Column({ type: 'timestamp with time zone', nullable: true })
     birth_date: Date;
 
 
-    @Column()
+    @Column({nullable: true})
     telephone_no: string;
 
-    @Column()
+    @Column({nullable: true})
     fax: string;
 
-    @Column()
+    @Column({nullable: true})
     created_by: number;
 
-    @Column()
+    @Column({nullable: true})
     updated_by: number;
 
-    @Column()
+    @Column({default:null})
     user_id: number;
 }
