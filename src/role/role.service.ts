@@ -16,18 +16,18 @@ export class RoleService {
   }
 
   findAll() {
-    return `This action returns all role`;
+    return this.roleRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} role`;
+    return this.roleRepository.findOne({where: {id}})
   }
 
   update(id: number, updateRoleDto: UpdateRoleDto) {
-    return `This action updates a #${id} role`;
+    return this.roleRepository.update({id}, updateRoleDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} role`;
+    return this.roleRepository.delete({id});
   }
 }
