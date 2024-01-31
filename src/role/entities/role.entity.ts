@@ -21,14 +21,11 @@ export class Role extends CommonEntity{
     @Column()
     description: string;
 
-    @Column()
+    @Column({nullable:true})
     code: string;
 
     @Column()
     role_type: string;
-
-    @Column()
-    id: number;
     
 
     
