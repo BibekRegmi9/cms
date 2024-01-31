@@ -35,8 +35,6 @@ export class User extends CommonEntity{
     @Column({default:false})
     is_password_changed: boolean;
 
-   
-
     @Column({default:'male'})
     gender: string;
 

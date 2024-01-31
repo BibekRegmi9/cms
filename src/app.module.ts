@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/entities/user.entity';
+import { RoleModule } from './role/role.module';
+import { Role } from './role/entities/role.entity';
 
 
 @Module({
@@ -20,10 +22,11 @@ import { User } from './user/entities/user.entity';
       username: 'postgres',
       password: 'root',
       database: 'cms_DB',
-      entities: [User],
+      entities: [User, Role],
       synchronize: true
     }),
-    UserModule],
+    UserModule,
+    RoleModule],
   controllers: [AppController],
   providers: [AppService],
 })

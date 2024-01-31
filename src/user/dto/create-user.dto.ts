@@ -1,5 +1,4 @@
-import { IsBoolean, IsDate, IsEmail, IsEmpty, IsNotEmpty, IsNumberString, IsString } from "class-validator";
-import { Unique } from "typeorm";
+import {  IsDate, IsEmail, IsNumberString, IsString } from "class-validator";
 
 export class CreateUserDto {
     

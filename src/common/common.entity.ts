@@ -11,4 +11,5 @@ export class CommonEntity {
     @UpdateDateColumn()
     updated_at: Date; 
 
+    
 }
