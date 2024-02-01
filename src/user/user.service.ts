@@ -148,7 +148,7 @@ GROUP BY
       const rolesToAdd = newRoleIds.filter(
         (roleId) => !alreadyExistingRoleIds.includes(roleId)
       );
-
+      //delete
       for (const roleIdToDelete of rolesToDelete) {
         const userRole = await this.userRoleRepository.findOne({
           where: { user_id: id, role_id: roleIdToDelete },
@@ -159,7 +159,7 @@ GROUP BY
       }
     }
 
-
+    // adding the new roles
     for (const roleIdToAdd of rolesToAdd) {
       const roleExists = await this.userRoleRepository.count({
         where: { id: roleIdToAdd },

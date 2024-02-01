@@ -11,6 +11,7 @@ import { UserRoleMapping } from './user-role/user_role_mapping.entity';
 import { ModulesModule } from './modules/modules.module';
 import { Module_Ent } from './modules/entities/module.entity';
 import { PrivilegeService } from './privilege/privilege.service';
+import { PrivilegeModule } from './privilege/privilege.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { PrivilegeService } from './privilege/privilege.service';
     RoleModule,
     UserRoleModule,
     ModulesModule,
+    PrivilegeModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrivilegeService],

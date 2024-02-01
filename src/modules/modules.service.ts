@@ -9,6 +9,6 @@ export class ModulesService {
         @InjectRepository(Module_Ent) private moduleRepository: Repository<Module_Ent>,
     ){}
 
-
     
+
 }
