@@ -13,6 +13,7 @@ import { Module_Ent } from './modules/entities/module.entity';
 import { PrivilegeService } from './privilege/privilege.service';
 import { PrivilegeModule } from './privilege/privilege.module';
 import { ScreenService } from './screen/screen.service';
+import { ScreenModule } from './screen/screen.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { ScreenService } from './screen/screen.service';
     UserRoleModule,
     ModulesModule,
     PrivilegeModule,
+    ScreenModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrivilegeService, ScreenService],
