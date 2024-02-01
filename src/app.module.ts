@@ -8,7 +8,9 @@ import { RoleModule } from './role/role.module';
 import { Role } from './role/entities/role.entity';
 import { UserRoleModule } from './user-role/user-role.module';
 import { UserRoleMapping } from './user-role/user_role_mapping.entity';
-
+import { ModulesModule } from './modules/modules.module';
+import { Module_Ent } from './modules/entities/module.entity';
+import { PrivilegeService } from './privilege/privilege.service';
 
 @Module({
   imports: [
@@ -24,16 +26,15 @@ import { UserRoleMapping } from './user-role/user_role_mapping.entity';
       username: 'postgres',
       password: 'root',
       database: 'cms_DB',
-      entities: [User, Role, UserRoleMapping ],
-      synchronize: true
+      entities: [User, Role, UserRoleMapping, Module_Ent],
+      synchronize: true,
     }),
     UserModule,
     RoleModule,
     UserRoleModule,
-  
-  TypeOrmModule.forFeature([UserRoleMapping])],
+    ModulesModule,
+  ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PrivilegeService],
 })
-
 export class AppModule {}
