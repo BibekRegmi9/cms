@@ -14,9 +14,11 @@ import { PrivilegeService } from './privilege/privilege.service';
 import { PrivilegeModule } from './privilege/privilege.module';
 import { ScreenService } from './screen/screen.service';
 import { ScreenModule } from './screen/screen.module';
+import { Screen } from './screen/entities/screen.entity';
 
 @Module({
   imports: [
+
     TypeOrmModule.forRoot({
       type: 'postgres',
       // host: process.env.POSTGRES_HOST,
@@ -29,9 +31,10 @@ import { ScreenModule } from './screen/screen.module';
       username: 'postgres',
       password: 'root',
       database: 'cms_DB',
-      entities: [User, Role, UserRoleMapping, Module_Ent],
+      entities: [User, Role, UserRoleMapping, Module_Ent, Screen],
       synchronize: true,
     }),
+    
     UserModule,
     RoleModule,
     UserRoleModule,
@@ -40,6 +43,6 @@ import { ScreenModule } from './screen/screen.module';
     ScreenModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PrivilegeService, ScreenService],
+  providers: [AppService, ],
 })
 export class AppModule {}
