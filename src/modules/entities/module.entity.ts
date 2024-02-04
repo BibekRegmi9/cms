@@ -15,4 +15,6 @@ export class Module_Ent extends CommonEntity{
 
     @Column({nullable: false})
     screen_id: number;
+
+    
 }
