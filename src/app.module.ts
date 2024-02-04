@@ -15,6 +15,7 @@ import { Screen } from './screen/entities/screen.entity';
 import { PrivilegesService } from './privileges/privileges.service';
 import { PrivilegesModule } from './privileges/privileges.module';
 import { Privilege } from './privileges/entities/privileges.entity';
+import { ModulePrivilegeService } from './module-privilege/module-privilege.service';
 
 @Module({
   imports: [
@@ -43,6 +44,6 @@ import { Privilege } from './privileges/entities/privileges.entity';
     PrivilegesModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ModulePrivilegeService],
 })
 export class AppModule {}

@@ -19,7 +19,7 @@ export class PrivilegesService {
      }
 
 
-     async getAllPrivilege(id: number){
+     async getAllPrivilege(){
         const privilege = await this.privilegeRepository.find();
         return privilege;
      }
