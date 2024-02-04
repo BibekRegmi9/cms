@@ -10,9 +10,6 @@ import { UserRoleModule } from './user-role/user-role.module';
 import { UserRoleMapping } from './user-role/user_role_mapping.entity';
 import { ModulesModule } from './modules/modules.module';
 import { Module_Ent } from './modules/entities/module.entity';
-import { PrivilegeService } from './privilege/privilege.service';
-import { PrivilegeModule } from './privilege/privilege.module';
-import { ScreenService } from './screen/screen.service';
 import { ScreenModule } from './screen/screen.module';
 import { Screen } from './screen/entities/screen.entity';
 
@@ -39,7 +36,6 @@ import { Screen } from './screen/entities/screen.entity';
     RoleModule,
     UserRoleModule,
     ModulesModule,
-    PrivilegeModule,
     ScreenModule,
   ],
   controllers: [AppController],

@@ -26,6 +26,7 @@ export class ModulesController {
         const module = await this.moduleService.getOne(+id);
         return module;
     }
+    
 
     @Patch(':id')
     async update(@Param('id') id: string, @Body() updateModuleDto: UpdateModuleDto){
