@@ -12,6 +12,9 @@ import { ModulesModule } from './modules/modules.module';
 import { Module_Ent } from './modules/entities/module.entity';
 import { ScreenModule } from './screen/screen.module';
 import { Screen } from './screen/entities/screen.entity';
+import { PrivilegesService } from './privileges/privileges.service';
+import { PrivilegesModule } from './privileges/privileges.module';
+import { Privilege } from './privileges/entities/privileges.entity';
 
 @Module({
   imports: [
@@ -28,7 +31,7 @@ import { Screen } from './screen/entities/screen.entity';
       username: 'postgres',
       password: 'root',
       database: 'cms_DB',
-      entities: [User, Role, UserRoleMapping, Module_Ent, Screen],
+      entities: [User, Role, UserRoleMapping, Module_Ent, Screen, Privilege],
       synchronize: true,
     }),
     
@@ -37,8 +40,9 @@ import { Screen } from './screen/entities/screen.entity';
     UserRoleModule,
     ModulesModule,
     ScreenModule,
+    PrivilegesModule,
   ],
   controllers: [AppController],
-  providers: [AppService, ],
+  providers: [AppService],
 })
 export class AppModule {}
