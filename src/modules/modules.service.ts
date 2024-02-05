@@ -95,15 +95,37 @@ export class ModulesService {
 
             //new privileges
             const newModuleIds = updateModuleDto.privileges?.filter(f=>!f?.id)
+
+
+            for(let prv of newModuleIds){
+              const newPrv=  this.modulePrivilegeMapping.create(
+                    {
+                        end_point:prv.endpoint,
+                        method:prv.method,
+                        module_id:id,
+                        privilege_id:prv.privilege_id
+                    }
+                )
+                await this.modulePrivilegeMapping.save(newPrv)
+            }
             
               
             const existedPrivilegeFromDto=updateModuleDto.privileges.filter(f=>f?.id).map(m=>m.id)
+
+            for(let prv of updateModuleDto.privileges?.filter(f=>f.id)){
+                await this.modulePrivilegeMapping.update({id:prv.id},prv)
+
+            }
 
             // deleting privileges
             const privilegeToDelete = alreadyExistingPrivilegeIds.filter(
                 (privileges) => !existedPrivilegeFromDto.includes(privileges)
             );
 
+
+            for(let prv of privilegeToDelete){
+                await this.modulePrivilegeMapping.delete({id:prv})
+            }
 
             // adding privileges
             const privilegeToAdd = newModuleIds.filter(
@@ -113,12 +135,8 @@ export class ModulesService {
             // delete the old privileges
             for (const privilegeId of privilegeToDelete) {
                 await this.modulePrivilegeMapping.delete({ module_id: id, privilege_id: privilegeId })
-
-
-            // add new privilege
-
-        }
-    });
+            }
+        });
     }
 
 

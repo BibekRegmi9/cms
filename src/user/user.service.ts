@@ -196,7 +196,6 @@ GROUP BY
 
 
 
-
   remove(id: number) {
     this.userRepository.delete({ id });
   }
