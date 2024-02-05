@@ -11,7 +11,7 @@ export class Module_Ent extends CommonEntity{
     @Column()
     description: string;
 
-    @Column({nullable: true})
+    @Column({unique: true})
     code: string;
 
     @Column({nullable: false})
@@ -21,4 +21,5 @@ export class Module_Ent extends CommonEntity{
     @JoinColumn({name: 'screen_id', referencedColumnName: 'id', foreignKeyConstraintName:'screen_id'})
     screen: Screen;
 
+    
 }

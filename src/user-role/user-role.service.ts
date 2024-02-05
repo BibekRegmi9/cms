@@ -7,6 +7,6 @@ import { Repository } from 'typeorm';
 export class UserRoleService {
     constructor(
         @InjectRepository(UserRoleMapping) private userRoleService: Repository<UserRoleMapping>    ){
-
+            
     }
 }

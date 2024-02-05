@@ -1,4 +1,4 @@
-import { IsString } from "class-validator";
+import { IsNumber, IsString } from "class-validator";
 
 export class CreateModuleDto{
 
@@ -11,6 +11,13 @@ export class CreateModuleDto{
     @IsString()
     code: string;
 
-    @IsString()
+    privileges: [{
+        privilege_id: number,
+        method: string,
+        endpoint: string;
+    }]
+
+    @IsNumber()
     screen_id: number;
+
 }

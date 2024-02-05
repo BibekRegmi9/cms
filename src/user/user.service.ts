@@ -177,7 +177,7 @@ GROUP BY
       });
       await t.save(userRole);
     }
-    return { msg: "User updated " };
+    return { msg: "User updated"};
     }
     );
   }
