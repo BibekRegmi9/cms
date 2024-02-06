@@ -5,7 +5,6 @@ import { Module_Ent } from './entities/module.entity';
 import { CreateModuleDto } from './dto/create-module.dto';
 import { UpdateModuleDto } from './dto/update-module.dto';
 import { ModulePrivilegeMapping } from 'src/module-privilege/module_privilege_mapping.entity';
-import { Privilege } from 'src/privileges/entities/privileges.entity';
 
 @Injectable()
 export class ModulesService {

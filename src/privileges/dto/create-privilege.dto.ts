@@ -10,4 +10,5 @@ export class CreatePrivilegeDto{
 
     @IsString()
     code: string;
+    
 }
