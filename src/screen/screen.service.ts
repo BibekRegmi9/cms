@@ -18,8 +18,51 @@ export class ScreenService {
     }
 
     async findAll(){
-        const screen = this.screenRepository.find();
-        return screen;
+        const query = `
+        WITH temp AS (
+            SELECT 
+                p."name",
+                mp."module_id" AS "moduleId",
+                JSON_AGG(
+                    JSON_BUILD_OBJECT(
+                        'modulePriviligeId', mp.id,
+                        'priviligeId', p.id,
+                        'endpoint', mp.end_point
+                    )
+                ) AS details 
+            FROM 
+                module_privilege mp
+             
+            INNER JOIN privileges p ON p.id = mp."privilegeId"
+            GROUP BY 1, 2
+        ),
+        temps AS (
+            SELECT 
+                t."moduleId",
+                m."name",
+                JSON_AGG(
+                    JSON_BUILD_OBJECT(
+                        'details', t.details,
+                        'name', t.name
+                    )
+                ) AS privileges 
+            FROM 
+                temp t 
+            INNER JOIN modules m ON m.id = t."moduleId"
+            GROUP BY 1, 2
+        )
+        SELECT 
+            s.name AS "screenName",
+            JSON_AGG(t.*)  as details
+        FROM 
+            temps t
+        INNER JOIN modules m ON m.id = t."moduleId"
+        INNER JOIN screen s ON s.id = m.screen_id
+        GROUP BY 1;
+        `;
+
+        const fetchScreenwithModuleAndPrivilege = await this.screenRepository.query(query);
+        return fetchScreenwithModuleAndPrivilege;
     }
 
     async findById(id: number){
