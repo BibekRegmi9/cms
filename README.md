@@ -23,8 +23,23 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
+This project is a Role-Based Access Control (RBAC) system. RBAC is a policy-neutral access-control mechanism defined around roles and privileges. The components of RBAC such as role-permissions, user-role, and role-role relationships make it simple to perform user assignments.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Users: This table stores information about the users who will be using the system. It typically includes fields like user_id, - username, password, email, etc.
+- Roles: This table defines the various roles that exist within the system. For example, admin, editor, viewer, etc.
+- User_Role_Mapping: This table is a many-to-many relationship table that maps users to their respective roles. A user can have multiple roles and a role can be assigned to multiple users.
+- Modules: This table could represent different modules or sections of the application, like billing, inventory, HR, etc.
+- Privileges: This table lists the various privileges or actions that can be performed, such as read, write, delete, etc.
+- Module_Privilege_Mapping: This table is a many-to-many relationship table that maps which privileges are applicable to which modules.
+- Screen: This table might represent the different screens or pages available in the application.
+- Accesses: This table could define the access level or permissions a role has on a particular screen or module.
+
+The system checks the role(s) of a user and determines the modules they can access and the operations they can perform. This kind of system is common in applications where you need to control the resources each user can access and the operations they can perform.
+
+
+## Database Design
+![DB-Design](img/erd.jpg)
+
 
 ## Installation
 
@@ -58,16 +73,5 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
