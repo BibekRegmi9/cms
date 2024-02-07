@@ -49,6 +49,6 @@ import { Accesses } from './accesses/entities/accesses.entity';
     AccessesModule,
   ],
   controllers: [AppController],
-  providers: [AppService, AccessesService],
+  providers: [AppService],
 })
 export class AppModule {}
