@@ -17,6 +17,8 @@ import { Privilege } from './privileges/entities/privileges.entity';
 import { ModulePrivilegeModule } from './module-privilege/module-privilege.module';
 import { ModulePrivilegeMapping } from './module-privilege/module_privilege_mapping.entity';
 import { AccessesService } from './accesses/accesses.service';
+import { AccessesModule } from './accesses/accesses.module';
+import { ServiceModule } from './service/service.module';
 
 @Module({
   imports: [
@@ -44,6 +46,8 @@ import { AccessesService } from './accesses/accesses.service';
     ScreenModule,
     PrivilegesModule,
     ModulePrivilegeModule,
+    AccessesModule,
+    ServiceModule,
   ],
   controllers: [AppController],
   providers: [AppService, AccessesService],
