@@ -18,7 +18,7 @@ import { ModulePrivilegeModule } from './module-privilege/module-privilege.modul
 import { ModulePrivilegeMapping } from './module-privilege/module_privilege_mapping.entity';
 import { AccessesService } from './accesses/accesses.service';
 import { AccessesModule } from './accesses/accesses.module';
-import { ServiceModule } from './service/service.module';
+import { Accesses } from './accesses/entities/accesses.entity';
 
 @Module({
   imports: [
@@ -35,7 +35,7 @@ import { ServiceModule } from './service/service.module';
       username: 'postgres',
       password: 'root',
       database: 'cms_DB',
-      entities: [User, Role, UserRoleMapping, Module_Ent, Screen, Privilege, ModulePrivilegeMapping],
+      entities: [User, Role, UserRoleMapping, Module_Ent, Screen, Privilege, ModulePrivilegeMapping, Accesses],
       synchronize: true,
     }),
     
@@ -47,7 +47,6 @@ import { ServiceModule } from './service/service.module';
     PrivilegesModule,
     ModulePrivilegeModule,
     AccessesModule,
-    ServiceModule,
   ],
   controllers: [AppController],
   providers: [AppService, AccessesService],
