@@ -14,5 +14,4 @@ export class CommonEntity {
     @Column({default: false})
     is_active: boolean;
 
-    
 }
