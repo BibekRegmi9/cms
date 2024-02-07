@@ -14,7 +14,10 @@ export class CreateAccessesDto{
     is_permanent: boolean;
 
     @IsNumber()
-    module_privilege_id: number;
+    module_id: number;
+
+    @IsNumber()
+    privilege_id: number;
 
     @IsNumber()
     role_id: number;
