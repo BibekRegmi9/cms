@@ -40,5 +40,3 @@ export class ModulesController {
         await this.moduleService.delete(+id);
     }
 }
-
-

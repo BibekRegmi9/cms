@@ -7,29 +7,30 @@ import { Privilege } from "src/privileges/entities/privileges.entity";
 @Entity('module_privilege')
 export class ModulePrivilegeMapping extends CommonEntity{
     
-    @Column()
-    module_id: number;
-
+    // @Column()
+    // module_id: number;
     @ManyToOne(() => Module_Ent)
     @JoinColumn({
       referencedColumnName: 'id',
       foreignKeyConstraintName: 'module_id',
+      name:'module_id'
     })
-    module: Module_Ent;
+    module_id: number;
 
 
 
-
-    @Column()
-    privilege_id: number;
-
+    // @Column()
+    // privilege_id: number;
     @ManyToOne(()=> Privilege)
     @JoinColumn({
         referencedColumnName: 'id',
-        foreignKeyConstraintName: 'privilege_id'
+        foreignKeyConstraintName: 'privilege_id',
+        name:'privilege_id'
     })
-    privilege: Privilege;
+    privilege_id: number;
 
+
+    
     @Column()
     method: string;
 
