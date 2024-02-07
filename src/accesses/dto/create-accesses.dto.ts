@@ -1,4 +1,9 @@
-import { IsBoolean, IsNumber } from "class-validator";
+import { IsBoolean, IsEnum, IsNumber } from "class-validator";
+
+export enum Action {
+    DELETE = 'delete',
+    CREATE = 'create'
+}
 
 export class CreateAccessesDto{
     
@@ -13,4 +18,8 @@ export class CreateAccessesDto{
 
     @IsNumber()
     role_id: number;
+
+    @IsEnum({message: 'Action must be either "delete" or "create"'})
+    action: Action;
+
 }
