@@ -1,0 +1,52 @@
+version: '3.5'
+
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest-docker-postgres
+    ports:
+      - '3000:3000'
+    depends_on:
+      database:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src
+
+  database:
+    image: postgres
+    restart: always
+    env_file: .env
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: dev_db
+    container_name: nest_docker
+    volumes:
+      - dev_db:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "-h",
+          "localhost",
+          "-U",
+          "postgres",
+          "-d",
+          "dev_db"
+        ]
+      interval: "1s"
+      timeout: "10s"
+      retries: 10
+      start_period: "1s"
+  
+
+volumes:
+   database:
+   app:
+   dev_db:
