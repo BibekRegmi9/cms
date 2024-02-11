@@ -21,6 +21,7 @@ import { AccessesModule } from './accesses/accesses.module';
 import { Accesses } from './accesses/entities/accesses.entity';
 import { ApprovalJourneyService } from './approval-journey/approval-journey.service';
 import { ApprovalJourneyModule } from './approval-journey/approval-journey.module';
+import { ResultantAreaModule } from './resultant-area/resultant-area.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { ApprovalJourneyModule } from './approval-journey/approval-journey.modul
     ModulePrivilegeModule,
     AccessesModule,
     ApprovalJourneyModule,
+    ResultantAreaModule,
   ],
   controllers: [AppController],
   providers: [AppService, ApprovalJourneyService],
