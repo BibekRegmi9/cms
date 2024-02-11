@@ -6,13 +6,13 @@ COPY package*.json ./
 
 RUN npm install
 
-
 COPY . .
 
 RUN npm install
 
 # RUN npm run build
 
-# RUN npm install bcrypt
+RUN npm install bcrypt
+
 
 CMD ["npm", "run", "start:dev"]

@@ -1,33 +1,23 @@
-version: '3.5'
-
+version: '3'
 services:
-
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: nest-docker-postgres
-    ports:
-      - '3000:3000'
-    depends_on:
-      database:
-        condition: service_healthy
-    volumes:
-      - ./src:/app/src
-
-  database:
+  db:
     image: postgres
     restart: always
-    env_file: .env
     environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: dev_db
-    container_name: nest_docker
+      - POSTGRES_PASSWORD=secretpassword
+    container_name: postgres
     volumes:
-      - dev_db:/var/lib/postgresql/data
+      - C:/Users/Bibek/Desktop/Web Dev/docker-databases/postgresql/data:/var/lib/postgres/data
     ports:
-      - '5433:5432'
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: secretpassword
+    ports: 
+      - '8080:80'
     healthcheck:
       test:
         [
@@ -38,15 +28,29 @@ services:
           "-U",
           "postgres",
           "-d",
-          "dev_db"
+          "postgres"
         ]
       interval: "1s"
       timeout: "10s"
       retries: 10
       start_period: "1s"
-  
 
-volumes:
-   database:
-   app:
-   dev_db:
+    depends_on:
+      - db
+
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest_cms_app
+    environment:
+      - PORT=${PORT} 
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src 
+volumes: 
+  app:
+    
