@@ -22,6 +22,7 @@ import { Accesses } from './accesses/entities/accesses.entity';
 import { ApprovalJourneyService } from './approval-journey/approval-journey.service';
 import { ApprovalJourneyModule } from './approval-journey/approval-journey.module';
 import { ResultantAreaModule } from './resultant-area/resultant-area.module';
+import { ResultantArea } from './resultant-area/entities/resultant-area.entity';
 
 @Module({
   imports: [
@@ -38,7 +39,7 @@ import { ResultantAreaModule } from './resultant-area/resultant-area.module';
       username: 'postgres',
       password: 'secretpassword',
       database: 'postgres',
-      entities: [User, Role, UserRoleMapping, Module_Ent, Screen, Privilege, ModulePrivilegeMapping, Accesses],
+      entities: [User, Role, UserRoleMapping, Module_Ent, Screen, Privilege, ModulePrivilegeMapping, Accesses, ResultantArea],
       synchronize: true,
     }),
     
