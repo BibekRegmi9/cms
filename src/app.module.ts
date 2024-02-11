@@ -20,6 +20,7 @@ import { AccessesService } from './accesses/accesses.service';
 import { AccessesModule } from './accesses/accesses.module';
 import { Accesses } from './accesses/entities/accesses.entity';
 import { ApprovalJourneyService } from './approval-journey/approval-journey.service';
+import { ApprovalJourneyModule } from './approval-journey/approval-journey.module';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { ApprovalJourneyService } from './approval-journey/approval-journey.serv
     PrivilegesModule,
     ModulePrivilegeModule,
     AccessesModule,
+    ApprovalJourneyModule,
   ],
   controllers: [AppController],
   providers: [AppService, ApprovalJourneyService],
