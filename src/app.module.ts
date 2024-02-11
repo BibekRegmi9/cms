@@ -19,6 +19,7 @@ import { ModulePrivilegeMapping } from './module-privilege/module_privilege_mapp
 import { AccessesService } from './accesses/accesses.service';
 import { AccessesModule } from './accesses/accesses.module';
 import { Accesses } from './accesses/entities/accesses.entity';
+import { ApprovalJourneyService } from './approval-journey/approval-journey.service';
 
 @Module({
   imports: [
@@ -49,6 +50,6 @@ import { Accesses } from './accesses/entities/accesses.entity';
     AccessesModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ApprovalJourneyService],
 })
 export class AppModule {}
