@@ -9,7 +9,8 @@ export class ResultantAreaController {
 
   @Post()
   create(@Body() createResultantAreaDto: CreateResultantAreaDto) {
-    return this.resultantAreaService.create(createResultantAreaDto);
+    const resultantArea =  this.resultantAreaService.create(createResultantAreaDto);
+    return resultantArea;
   }
 
   @Get()

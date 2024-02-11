@@ -14,4 +14,5 @@ export class ResultantArea  extends CommonEntity{
 
     @Column()
     outcome: string;
+    
 }
