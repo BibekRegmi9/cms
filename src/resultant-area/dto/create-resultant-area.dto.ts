@@ -1,1 +1,3 @@
-export class CreateResultantAreaDto {}
+export class CreateResultantAreaDto {
+    
+}
