@@ -25,6 +25,7 @@ import { ResultantAreaModule } from './resultant-area/resultant-area.module';
 import { ResultantArea } from './resultant-area/entities/resultant-area.entity';
 import { ResultantAreaWiseIndicatorService } from './resultant-area-wise-indicator/resultant-area-wise-indicator.service';
 import { ResultantAreaWiseIndicatorModule } from './resultant-area-wise-indicator/resultant-area-wise-indicator.module';
+import { ResultantAreaWiseIndicator } from './resultant-area-wise-indicator/entities/create-resultant-area-wise-indicator.entity';
 
 @Module({
   imports: [
@@ -41,7 +42,7 @@ import { ResultantAreaWiseIndicatorModule } from './resultant-area-wise-indicato
       username: 'postgres',
       password: 'secretpassword',
       database: 'postgres',
-      entities: [User, Role, UserRoleMapping, Module_Ent, Screen, Privilege, ModulePrivilegeMapping, Accesses, ResultantArea],
+      entities: [User, Role, UserRoleMapping, Module_Ent, Screen, Privilege, ModulePrivilegeMapping, Accesses, ResultantArea, ResultantAreaWiseIndicator],
       synchronize: true,
     }),
     
