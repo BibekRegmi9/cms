@@ -16,19 +16,26 @@ export class ResultantAreaService {
     return saveResultantArea;
   }
 
-  findAll() {
-    return `This action returns all resultantArea`;
+
+  async findAll() {
+    const resultantArea = this.resultantAreaRepository.find();
+    return resultantArea;
   }
+
 
   findOne(id: number) {
-    return `This action returns a #${id} resultantArea`;
+    const resultantArea = this.resultantAreaRepository.findBy({id});
+    return resultantArea;
   }
+
 
   update(id: number, updateResultantAreaDto: UpdateResultantAreaDto) {
-    return `This action updates a #${id} resultantArea`;
+    const resultantArea = this.resultantAreaRepository.update({id}, updateResultantAreaDto);
+    return resultantArea;
   }
 
+  
   remove(id: number) {
-    return `This action removes a #${id} resultantArea`;
+    this.resultantAreaRepository.delete(id);
   }
 }

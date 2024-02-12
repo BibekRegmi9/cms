@@ -37,8 +37,9 @@ services:
 
     depends_on:
       - db
-    
+
   app:
+    restart: always
     build: 
       context: .
       dockerfile: Dockerfile
@@ -50,7 +51,8 @@ services:
     depends_on:
       - db
     volumes:
-      - ./src:/app/src 
+      - .:/usr/src/app 
+    
 volumes: 
   app:
     

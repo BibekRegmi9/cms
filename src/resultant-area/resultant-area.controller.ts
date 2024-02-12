@@ -15,12 +15,14 @@ export class ResultantAreaController {
 
   @Get()
   findAll() {
-    return this.resultantAreaService.findAll();
+    const resultantArea = this.resultantAreaService.findAll();
+    return resultantArea;
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.resultantAreaService.findOne(+id);
+    const resultantArea =  this.resultantAreaService.findOne(+id);
+    return resultantArea;
   }
 
   @Patch(':id')

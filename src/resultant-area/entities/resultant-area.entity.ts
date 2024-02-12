@@ -3,6 +3,7 @@ import { Column, Entity } from "typeorm";
 
 @Entity({name: 'resultant_area'})
 export class ResultantArea  extends CommonEntity{
+    
     @Column({default: false})
     is_permanent: Boolean;
 
