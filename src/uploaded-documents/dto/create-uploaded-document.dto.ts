@@ -1,1 +1,3 @@
-export class CreateUploadedDocumentDto {}
+export class CreateUploadedDocumentDto {
+    
+}
