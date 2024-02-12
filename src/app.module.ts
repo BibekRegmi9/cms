@@ -23,9 +23,9 @@ import { ApprovalJourneyService } from './approval-journey/approval-journey.serv
 import { ApprovalJourneyModule } from './approval-journey/approval-journey.module';
 import { ResultantAreaModule } from './resultant-area/resultant-area.module';
 import { ResultantArea } from './resultant-area/entities/resultant-area.entity';
-import { ResultantAreaWiseIndicatorService } from './resultant-area-wise-indicator/resultant-area-wise-indicator.service';
 import { ResultantAreaWiseIndicatorModule } from './resultant-area-wise-indicator/resultant-area-wise-indicator.module';
 import { ResultantAreaWiseIndicator } from './resultant-area-wise-indicator/entities/create-resultant-area-wise-indicator.entity';
+import { UploadedDocumentsModule } from './uploaded-documents/uploaded-documents.module';
 
 @Module({
   imports: [
@@ -57,6 +57,7 @@ import { ResultantAreaWiseIndicator } from './resultant-area-wise-indicator/enti
     ApprovalJourneyModule,
     ResultantAreaModule,
     ResultantAreaWiseIndicatorModule,
+    UploadedDocumentsModule,
     
   ],
   controllers: [AppController],
