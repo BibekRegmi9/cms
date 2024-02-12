@@ -34,7 +34,7 @@ export class ResultantAreaService {
     return resultantArea;
   }
 
-  
+
   remove(id: number) {
     this.resultantAreaRepository.delete(id);
   }

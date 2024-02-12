@@ -27,7 +27,8 @@ export class ResultantAreaController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateResultantAreaDto: UpdateResultantAreaDto) {
-    return this.resultantAreaService.update(+id, updateResultantAreaDto);
+    const resultantArea =  this.resultantAreaService.update(+id, updateResultantAreaDto);
+    return resultantArea;
   }
 
   @Delete(':id')
