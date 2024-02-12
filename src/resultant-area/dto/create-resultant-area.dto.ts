@@ -13,4 +13,5 @@ export class CreateResultantAreaDto {
 
     @IsBoolean()
     is_permanent: Boolean;
+    
 }
