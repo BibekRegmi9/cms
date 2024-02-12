@@ -57,8 +57,9 @@ import { ResultantAreaWiseIndicator } from './resultant-area-wise-indicator/enti
     ApprovalJourneyModule,
     ResultantAreaModule,
     ResultantAreaWiseIndicatorModule,
+    
   ],
   controllers: [AppController],
-  providers: [AppService, ApprovalJourneyService, ResultantAreaWiseIndicatorService],
+  providers: [AppService],
 })
 export class AppModule {}

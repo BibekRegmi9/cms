@@ -10,33 +10,33 @@ services:
       - C:/Users/Bibek/Desktop/Web Dev/docker-databases/postgresql/data:/var/lib/postgres/data
     ports:
       - "5432:5432"
-  pgadmin:
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: secretpassword
-    ports: 
-      - '8080:80'
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "pg_isready",
-          "-h",
-          "localhost",
-          "-U",
-          "postgres",
-          "-d",
-          "postgres"
-        ]
-      interval: "1s"
-      timeout: "10s"
-      retries: 10
-      start_period: "1s"
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   restart: always
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+  #     PGADMIN_DEFAULT_PASSWORD: secretpassword
+  #   ports: 
+  #     - '8080:80'
+    # healthcheck:
+    #   test:
+    #     [
+    #       "CMD",
+    #       "pg_isready",
+    #       "-h",
+    #       "localhost",
+    #       "-U",
+    #       "postgres",
+    #       "-d",
+    #       "postgres"
+    #     ]
+    #   interval: "1s"
+    #   timeout: "10s"
+    #   retries: 10
+    #   start_period: "1s"
 
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
 
   app:
     restart: always
@@ -51,8 +51,8 @@ services:
     depends_on:
       - db
     volumes:
-      - .:/usr/src/app/ 
-      - ./node_modules:/usr/src/app/node_modules
+      - ./src:/app/src 
+      - ./node_modules:/app/src/node_modules
 volumes: 
   app:
     

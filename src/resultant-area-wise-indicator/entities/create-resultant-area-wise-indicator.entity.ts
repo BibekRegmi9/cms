@@ -8,6 +8,7 @@ export class ResultantAreaWiseIndicator extends CommonEntity{
     @Column()
     is_permanent: boolean;
 
+    
     @ManyToOne(() => ResultantArea)
     @JoinColumn({
       referencedColumnName: 'id',
