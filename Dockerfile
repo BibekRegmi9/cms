@@ -14,5 +14,4 @@ RUN npm install
 
 RUN npm install bcrypt
 
-
 CMD ["npm", "run", "start:dev"]

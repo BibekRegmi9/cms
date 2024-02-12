@@ -7,9 +7,10 @@ services:
       - POSTGRES_PASSWORD=secretpassword
     container_name: postgres
     volumes:
-      - C:/Users/Bibek/Desktop/Web Dev/docker-databases/postgresql/data:/var/lib/postgres/data
+      - db:/var/lib/postgres/data
     ports:
       - "5432:5432"
+
   # pgadmin:
   #   image: dpage/pgadmin4
   #   restart: always
@@ -55,4 +56,5 @@ services:
       - ./node_modules:/app/src/node_modules
 volumes: 
   app:
+  db:
     
