@@ -7,7 +7,6 @@ export class ResultantAreaWiseIndicator extends CommonEntity{
     
     @Column()
     is_permanent: boolean;
-
     
     @ManyToOne(() => ResultantArea)
     @JoinColumn({
@@ -16,21 +15,13 @@ export class ResultantAreaWiseIndicator extends CommonEntity{
     })
     resultantArea: ResultantArea;
 
-    @Column()
-    task_execution_indicator: string;
+    @Column({unique: true})
+    name: string;
 
     @Column()
-    document_type: string;
-
-    @Column()
-    applicable_in_current_fiscal_year: boolean;
+    description: string;
 
     @Column()
     indicator_code: string;
 
-    @Column()
-    approval_type: string;
-
-    @Column()
-    descriptor_file_location: string;
 }

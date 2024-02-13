@@ -8,21 +8,13 @@ export class CreateResultantAreaWiseIndicatorDto {
     is_permanent: boolean;
 
     @IsString()
-    task_execution_indicator: string;
+    indicatorName: string;
 
     @IsString()
-    document_type: string;
-
-    @IsBoolean()
-    applicable_in_current_fiscal_year: boolean;
+    description: string;
 
     @IsString()
     indicator_code: string;
 
-    @IsString()
-    approval_type: string;
-
-    @IsString()
-    descriptor_file_location: string;
 
 }

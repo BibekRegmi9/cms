@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ResultantAreaWiseIndicator } from './entities/create-resultant-area-wise-indicator.entity';
 import { Repository } from 'typeorm';
@@ -8,9 +8,14 @@ import { UpdateResultantAreaWiseIndicatorDto } from './dto/update-resultant-area
 @Injectable()
 export class ResultantAreaWiseIndicatorService {
 
-    constructor(@InjectRepository(ResultantAreaWiseIndicator) private resultantAreaWiseIndicatorRepository: Repository<ResultantAreaWiseIndicator>){}
+    constructor(@InjectRepository(ResultantAreaWiseIndicator) private resultantAreaWiseIndicatorRepository: Repository<ResultantAreaWiseIndicator>,
+    ){}
 
     async create(createResultantAreaWiseIndicatorDto: CreateResultantAreaWiseIndicatorDto){
+        const existingIndicator = await this.findOne({where:{name:createResultantAreaWiseIndicatorDto.indicatorName}})
+        if(existingIndicator){
+            throw new HttpException("The indicator name already exist", HttpStatus.CONFLICT)
+        }
         const resultantAreaWiseIndicator = this.resultantAreaWiseIndicatorRepository.create(createResultantAreaWiseIndicatorDto);
         const saveResultantAreaWiseIndicator = this.resultantAreaWiseIndicatorRepository.save(resultantAreaWiseIndicator);
         return saveResultantAreaWiseIndicator;
