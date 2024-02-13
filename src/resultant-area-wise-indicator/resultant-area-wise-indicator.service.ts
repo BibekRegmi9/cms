@@ -12,18 +12,34 @@ export class ResultantAreaWiseIndicatorService {
     ){}
 
     async create(createResultantAreaWiseIndicatorDto: CreateResultantAreaWiseIndicatorDto){
-        const existingIndicator = await this.findOne({where:{name:createResultantAreaWiseIndicatorDto.indicatorName}})
-        if(existingIndicator){
-            throw new HttpException("The indicator name already exist", HttpStatus.CONFLICT)
-        }
+        
+        const existResultantAreaWiseIndicator =  await this.resultantAreaWiseIndicatorRepository.find
+        ({
+            where: {
+                name:createResultantAreaWiseIndicatorDto.indicatorName
+            }
+        })
+        if(existResultantAreaWiseIndicator){
+            throw HttpStatus.CONFLICT
+        } 
+
         const resultantAreaWiseIndicator = this.resultantAreaWiseIndicatorRepository.create(createResultantAreaWiseIndicatorDto);
         const saveResultantAreaWiseIndicator = this.resultantAreaWiseIndicatorRepository.save(resultantAreaWiseIndicator);
         return saveResultantAreaWiseIndicator;
     }
 
 
+
     async findAll(){
-        const resultantAreaWiseIndicator = await this.resultantAreaWiseIndicatorRepository.find();
+        const query = `SELECT 
+                        name, 
+                        description, 
+                        indicator_code 
+                        FROM resultant-area-wise-indicator 
+                        LEFT JOIN resultant_area ra ON ra.id = resultant-area-wise-indicator.resultant_area_id 
+                        GROUP BY 1`;
+
+        const resultantAreaWiseIndicator = await this.resultantAreaWiseIndicatorRepository.query(query);
         return resultantAreaWiseIndicator;
     }
 

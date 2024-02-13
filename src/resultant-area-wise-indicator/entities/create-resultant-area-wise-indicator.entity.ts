@@ -4,9 +4,7 @@ import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
 
 @Entity({name:'resultant-area-wise-indicator'})
 export class ResultantAreaWiseIndicator extends CommonEntity{
-    
-    @Column()
-    is_permanent: boolean;
+
     
     @ManyToOne(() => ResultantArea)
     @JoinColumn({
