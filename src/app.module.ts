@@ -26,6 +26,10 @@ import { ResultantArea } from './resultant-area/entities/resultant-area.entity';
 import { ResultantAreaWiseIndicatorModule } from './resultant-area-wise-indicator/resultant-area-wise-indicator.module';
 import { ResultantAreaWiseIndicator } from './resultant-area-wise-indicator/entities/create-resultant-area-wise-indicator.entity';
 import { UploadedDocumentsModule } from './uploaded-documents/uploaded-documents.module';
+import { BullModule } from '@nestjs/bull';
+import { QueueModule } from './queue/queue.module';
+import { EmailModule } from './email/email.module';
+
 
 @Module({
   imports: [
@@ -45,6 +49,15 @@ import { UploadedDocumentsModule } from './uploaded-documents/uploaded-documents
       entities: [User, Role, UserRoleMapping, Module_Ent, Screen, Privilege, ModulePrivilegeMapping, Accesses, ResultantArea, ResultantAreaWiseIndicator],
       synchronize: true,
     }),
+
+    // BullModule.forRootAsync({
+    //   useFactory: () => ({
+    //     redis: {
+    //       host: 'localhost',
+    //       port: 6379,
+    //     },
+    //   }),
+    // }),
     
     UserModule,
     RoleModule,
@@ -58,6 +71,8 @@ import { UploadedDocumentsModule } from './uploaded-documents/uploaded-documents
     ResultantAreaModule,
     ResultantAreaWiseIndicatorModule,
     UploadedDocumentsModule,
+    QueueModule,
+    EmailModule
     
   ],
   controllers: [AppController],

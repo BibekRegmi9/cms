@@ -6,6 +6,8 @@ import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { UserRoleMapping } from 'src/user-role/user_role_mapping.entity';
 import * as bcrypt from 'bcrypt';
+import { EmailService } from 'src/email/email.service';
+import { ProducerService } from 'src/rabbitmq/queueProducers';
 
 
 @Injectable()
@@ -15,6 +17,9 @@ export class UserService {
     @InjectRepository(User) private userRepository: Repository<User>,
     @InjectRepository(UserRoleMapping)
     private userRoleRepository: Repository<UserRoleMapping>,
+    private emailService: EmailService,
+    private producerService: ProducerService,
+
   ) {}
 
   async create(createUserDto: CreateUserDto) {
@@ -27,6 +32,7 @@ export class UserService {
     });
 
     const saveUser = await this.userRepository.save(newUser);
+
     for (let role of createUserDto.roleId) {
       if (role) {
         const createUserRole = this.userRoleRepository.create({
@@ -36,6 +42,15 @@ export class UserService {
         await this.userRoleRepository.save(createUserRole);
       } else throw new HttpException('Role Not Found', HttpStatus.NOT_FOUND);
     }
+
+    const emailData = {
+      email: saveUser.email,
+      subject: 'Welcome to DevCommunity',
+      html: `<p>Hello ${saveUser.first_name_en},</p>
+      <p>Welcome to our community! Your account is now active.</p>
+      <p>Enjoy your time with us!</p>`,
+    };
+    await this.producerService.addToEmailQueue(emailData);
     return saveUser;
   }
 
