@@ -1,15 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CustomerEntity } from './entity/customer-entity';
-import { MongoRepository } from 'typeorm';
 import { CreateCustomerDto } from './dto/create-customer.dto';
-import { setFlagsFromString } from 'v8';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class CustomerService {
     constructor(
         @InjectRepository(CustomerEntity)
-        private customerRepository: MongoRepository<CustomerEntity>
+        private customerRepository: Repository<CustomerEntity>
     ){}
 
     async findOneBy(email: string): Promise<CustomerEntity | undefined> {
@@ -22,4 +21,5 @@ export class CustomerService {
             createdAt: new Date(),
         });
     }
+
 }
