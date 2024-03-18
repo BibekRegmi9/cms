@@ -5,8 +5,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 export class EmailService {
     constructor (private readonly mailService: MailerService){}
 
-    async sendEmail(options: { email: string; subject: string; html: string;
-    }) {
+    async sendEmail(options: { email: string; subject: string; html: string}) {
       try {
         const message = {
           to: options.email,

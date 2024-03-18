@@ -29,6 +29,9 @@ import { UploadedDocumentsModule } from './uploaded-documents/uploaded-documents
 import { BullModule } from '@nestjs/bull';
 import { QueueModule } from './queue/queue.module';
 import { EmailModule } from './email/email.module';
+import { AuthModule } from './auth/auth.module';
+import { CustomerModule } from './customer/customer.module';
+
 
 
 @Module({
@@ -72,7 +75,9 @@ import { EmailModule } from './email/email.module';
     ResultantAreaWiseIndicatorModule,
     UploadedDocumentsModule,
     QueueModule,
-    EmailModule
+    EmailModule,
+    AuthModule,
+    CustomerModule
     
   ],
   controllers: [AppController],

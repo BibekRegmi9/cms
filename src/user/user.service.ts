@@ -55,7 +55,7 @@ export class UserService {
   }
 
 
-
+  
   async findAll() {
     const query = `
     SELECT

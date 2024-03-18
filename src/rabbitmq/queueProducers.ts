@@ -17,6 +17,7 @@ export class ProducerService{
     }
 
 
+    
     async addToEmailQueue(email: any){
         try {
             await this.channelWrapper.sendToQueue(
@@ -26,7 +27,7 @@ export class ProducerService{
                 persistent: true,
               },
             );
-            Logger.log('===================> Sent To Queue');
+            Logger.log('==================================> Sent To Queue');
           } catch (error) {
             throw new HttpException(
                 'Error adding mail to queue',

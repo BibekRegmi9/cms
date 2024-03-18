@@ -26,10 +26,11 @@ export class ConsumerService implements OnModuleInit{
                   channel.ack(message);
                 }
               });
+              
             });
             this.logger.log('Consumer service started and listening for messages.');
           } catch (err) {
             this.logger.error('Error starting the consumer:', err);
-          }
+        }
     }
 }

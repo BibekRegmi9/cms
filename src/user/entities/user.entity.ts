@@ -55,4 +55,10 @@ export class User extends CommonEntity{
     @Column({nullable: true})
     updated_by: number;
 
+    @Column({ nullable: true })
+    last_login?: Date;
+
+    @Column('varchar', { nullable: true })
+    hach_refresh_token: string;
+
 }
